@@ -1,5 +1,5 @@
 import numpy as np
-
+import re
 # define variable a with numbers in the range from 0 to 7 (not inclusive)
 a = np.arange(start=0, stop=7)
 
@@ -36,7 +36,16 @@ X = X[:, 0:4]
 
 # for using e.g. only third letter or first and last try X[:,[2]] and X[:, [0,3]]
 
+def has_letter(arr):
+    return any([x.isalpha() for x in ','.join(map(str, arr))])
+
+
 def get_matrix(string_data):
     rows = string_data.replace('−', '-').split("\n")
     data = [xx.split(" ") for xx in rows]
+    if has_letter(data[1]):
+        data = data[1:]
+    left_col = [row[0] for row in data]
+    if has_letter(left_col):
+        data = [row[1:] for row in data]
     return np.matrix(data, dtype=float)

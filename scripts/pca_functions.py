@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 
 def draw_curve_from_diagonal_values(values):
-    np_values = np.array(values)
     squares = np.square(values)
     sum = np.sum(squares)
     rho = squares / (np.ones(len(squares)) * sum)
