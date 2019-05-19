@@ -9,9 +9,6 @@ class Tree:
         self.data = data
 
 
-d = Tree([32, 24], left=Tree([23, 8]), right=Tree([9, 16]))
-
-
 def get_gini(selections):
     total = np.sum(selections)
     return 1 - reduce(
@@ -58,5 +55,7 @@ def get_purity_gain(data, method_string='gini'):
 
     return calculate_purity(data)
 
+
+d = Tree([32, 24], left=Tree([23, 8]), right=Tree([9, 16]))
 
 print(get_purity_gain(d, 'class_error'))
