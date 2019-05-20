@@ -1,5 +1,6 @@
 import numpy as np
 import re
+
 # define variable a with numbers in the range from 0 to 7 (not inclusive)
 a = np.arange(start=0, stop=7)
 
@@ -40,12 +41,34 @@ def has_letter(arr):
     return any([x.isalpha() for x in ','.join(map(str, arr))])
 
 
+def normalize(string_data):
+    return string_data.replace('−', '-')
+
+
 def get_matrix(string_data):
-    rows = string_data.replace('−', '-').split("\n")
+    rows = normalize(string_data).split("\n")
     data = [xx.split(" ") for xx in rows]
     if has_letter(data[1]):
         data = data[1:]
     left_col = [row[0] for row in data]
     if has_letter(left_col):
         data = [row[1:] for row in data]
-    return np.matrix(data, dtype=float)
+
+    print(data)
+    return np.array(np.matrix(data, dtype=float))
+
+
+def get_distance_matrix(string_row):
+    row = normalize(string_row).split(" ")
+    arr = np.zeros((len(row), len(row)))
+    for i, a in enumerate(row):
+        for j, b in enumerate(row):
+            arr[i][j] = abs(float(a) - float(b))
+    return np.array(arr)
+
+
+def choose_mode(x_string: str):
+    if "\n" in x_string:
+        return get_matrix(x_string)
+
+    return get_distance_matrix(x_string)

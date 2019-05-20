@@ -2,7 +2,6 @@
 Compute prediction of linear model
 
 """
-
 import numpy as np
 from sklearn.linear_model import LinearRegression
 

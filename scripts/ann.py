@@ -15,8 +15,11 @@ def tanh(x):
 
 def get_ann(w02, weights, matrices, activation='logistic'):
     """
+
     ann = get_ann(2.84, [3.25, 3.46], [[21.78, -1.65, 0, -13.26, -8.46], [-9.6, -0.44, 0.01, 14.54, 9.5]], "rect")
     y = ann([1, 6.8, 225, 0.44, 0.68])
+
+    REMEMBER TO PUT "1" AT THE START OF ann([..])
     """
     matrices = np.array([np.matrix(m).T for m in matrices])
     weights = np.array(weights)

@@ -2,7 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
 def draw_curve_from_diagonal_values(values):
+    """
+
+    :param values: singular_values e.g [17.4, 7.3, 4.3]
+    :return:
+    """
     squares = np.square(values)
     sum = np.sum(squares)
     rho = squares / (np.ones(len(squares)) * sum)
